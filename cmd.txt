@@ -4,7 +4,7 @@ gcc -v -c -save-temps add.s -o add.o
 gcc -v -save-temps add.o -o app
 gcc -v -save-temps sub.c -o app
 gcc -v -save-temps app.c -o app
-gcc -v -save-temps -o app add.c sub.c app.c 
+
 file add.c
 file add.i
 file add.s
