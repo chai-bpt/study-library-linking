@@ -1,4 +1,6 @@
 #include<stdio.h>
+#include<dlfcn.h>
+#include<stdlib.h>
 
 int main(void)
 {
@@ -8,9 +10,24 @@ int main(void)
        
        int diff = 0;
        int ret = 0;
+
+       int (*add)(int,int);
+       int (*sub)(int*,int*,int*);
+       void* handleAddSub = NULL;
        
        printf("\n%s",__func__);
 
+       handleAddSub = dlopen("./libAddSub.so",RTLD_NOW);
+       if(handleAddSub == NULL)
+       {
+	       printf("\n%s\tFail to load libAddSub.so",__func__);
+       }
+       printf("\n%s\thandleAddSub = 0x%x",__func__,handleAddSub);
+
+       add = dlsym(handleAddSub,"add");
+       sub = dlsym(handleAddSub,"sub");
+       printf("\n%s\tadd = 0x%x",__func__,add);
+       printf("\n%s\tsub = 0x%x",__func__,sub);
 
        printf("\n%s\tnum1 = %d",__func__,num1);
        printf("\n%s\tnum2 = %d",__func__,num2);     
@@ -32,7 +49,8 @@ int main(void)
 
        printf("\n%s\tdiff = %d",__func__,diff);
      
-      
+       dlclose(handleAddSub);
+
        printf("\n%s\n",__func__);
 
        return 0;
