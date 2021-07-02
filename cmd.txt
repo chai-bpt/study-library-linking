@@ -1,5 +1,5 @@
 gcc -v -c -save-temps -fPIC add.c
 gcc -v -c -save-temps -fPIC sub.c
-gcc -v -save-temps -shared -o libAddSub.so add.o sub.o
+
 gcc -v -save-temps -o app app.c ./libAddSub.so
 ./app 
