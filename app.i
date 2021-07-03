@@ -1916,7 +1916,11 @@ int main(void)
 # 54 "app.c" 3 4
                                              0x00002
 # 54 "app.c"
-                                                     );
+                                                     |
+# 54 "app.c" 3 4
+                                                      0x00100
+# 54 "app.c"
+                                                                 );
        if(handleAddSub == 
 # 55 "app.c" 3 4
                          ((void *)0)

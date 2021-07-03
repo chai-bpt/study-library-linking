@@ -51,7 +51,7 @@ int main(void)
 
 //       dlclose(handleMulDiv);
 
-       handleAddSub = dlopen("./libAddSub.so",RTLD_NOW);
+       handleAddSub = dlopen("./libAddSub.so",RTLD_NOW|RTLD_GLOBAL);
        if(handleAddSub == NULL)
        {
 	       printf("\n%s\tFail to load libAddSub.so\n",__func__);

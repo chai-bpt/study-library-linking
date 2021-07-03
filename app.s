@@ -148,7 +148,7 @@ main:
 	leaq	.LC10(%rip), %rdi
 	movl	$0, %eax
 	call	printf@PLT
-	movl	$2, %esi
+	movl	$258, %esi
 	leaq	.LC11(%rip), %rdi
 	call	dlopen@PLT
 	movq	%rax, -56(%rbp)
