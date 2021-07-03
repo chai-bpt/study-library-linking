@@ -1907,10 +1907,10 @@ int main(void)
        divval = div(num1, num2);
        printf("\n%s\tdivval = %d",__func__,divval);
 
-       mulval = mul(num1, num2);
-       printf("\n%s\tmulval = %d",__func__,mulval);
 
-       dlclose(handleMulDiv);
+
+
+
 
        handleAddSub = dlopen("./libAddSub.so",
 # 54 "app.c" 3 4
@@ -1927,6 +1927,10 @@ int main(void)
         exit(-1);
        }
        printf("\n%s\thandleAddSub = 0x%x",__func__,handleAddSub);
+
+       mulval = mul(num1, num2);
+       printf("\n%s\tmulval = %d",__func__,mulval);
+       dlclose(handleMulDiv);
 
        add = dlsym(handleAddSub,"add");
        sub = dlsym(handleAddSub,"sub");

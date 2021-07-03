@@ -25,14 +25,14 @@
 .LC10:
 	.string	"\n%s\tdivval = %d"
 .LC11:
-	.string	"\n%s\tmulval = %d"
-.LC12:
 	.string	"./libAddSub.so"
 	.align 8
-.LC13:
+.LC12:
 	.string	"\n%s\tFail to load libAddSub.so\n"
-.LC14:
+.LC13:
 	.string	"\n%s\thandleAddSub = 0x%x"
+.LC14:
+	.string	"\n%s\tmulval = %d"
 .LC15:
 	.string	"add"
 .LC16:
@@ -148,6 +148,25 @@ main:
 	leaq	.LC10(%rip), %rdi
 	movl	$0, %eax
 	call	printf@PLT
+	movl	$2, %esi
+	leaq	.LC11(%rip), %rdi
+	call	dlopen@PLT
+	movq	%rax, -56(%rbp)
+	cmpq	$0, -56(%rbp)
+	jne	.L3
+	leaq	__func__.2865(%rip), %rsi
+	leaq	.LC12(%rip), %rdi
+	movl	$0, %eax
+	call	printf@PLT
+	movl	$-1, %edi
+	call	exit@PLT
+.L3:
+	movq	-56(%rbp), %rax
+	movq	%rax, %rdx
+	leaq	__func__.2865(%rip), %rsi
+	leaq	.LC13(%rip), %rdi
+	movl	$0, %eax
+	call	printf@PLT
 	movl	-80(%rbp), %edx
 	movl	-84(%rbp), %eax
 	movq	-40(%rbp), %rcx
@@ -158,31 +177,12 @@ main:
 	movl	-64(%rbp), %eax
 	movl	%eax, %edx
 	leaq	__func__.2865(%rip), %rsi
-	leaq	.LC11(%rip), %rdi
+	leaq	.LC14(%rip), %rdi
 	movl	$0, %eax
 	call	printf@PLT
 	movq	-48(%rbp), %rax
 	movq	%rax, %rdi
 	call	dlclose@PLT
-	movl	$2, %esi
-	leaq	.LC12(%rip), %rdi
-	call	dlopen@PLT
-	movq	%rax, -56(%rbp)
-	cmpq	$0, -56(%rbp)
-	jne	.L3
-	leaq	__func__.2865(%rip), %rsi
-	leaq	.LC13(%rip), %rdi
-	movl	$0, %eax
-	call	printf@PLT
-	movl	$-1, %edi
-	call	exit@PLT
-.L3:
-	movq	-56(%rbp), %rax
-	movq	%rax, %rdx
-	leaq	__func__.2865(%rip), %rsi
-	leaq	.LC14(%rip), %rdi
-	movl	$0, %eax
-	call	printf@PLT
 	movq	-56(%rbp), %rax
 	leaq	.LC15(%rip), %rsi
 	movq	%rax, %rdi
