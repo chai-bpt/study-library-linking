@@ -3,6 +3,8 @@ gcc -v -c -save-temps -fPIC sub.c
 gcc -v -c -save-temps -fPIC init.c
 gcc -v -c -save-temps -fPIC fini.c
 gcc -v -save-temps -nostartfiles -shared -o libAddSub.so add.o sub.o init.o fini.o 
-gcc -v -c -save-temps app.c
-gcc -v -save-temps -o app app.o -ldl
+gcc -v -c -save-temps -fPIC init_fini_muldiv.c 
+gcc -v -c -save-temps -fPIC muldiv.c
+gcc -v -save-temps -nostartfiles -shared -o libMulDiv.so muldiv.o init_fini_muldiv.o
+gcc -v -save-temps -o app app.c -ldl
 ./app 
