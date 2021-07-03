@@ -25,7 +25,7 @@ int main(void)
        printf("\n%s",__func__);
 
 
-       handleMulDiv = dlopen("./libMulDiv.so",RTLD_NOW);
+       handleMulDiv = dlopen("./libMulDiv.so",RTLD_LAZY);
        if(handleMulDiv == NULL)
        {
 	       printf("\n%s\tFail to load libMulDiv.so\n",__func__);

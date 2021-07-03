@@ -1880,9 +1880,9 @@ int main(void)
 
        handleMulDiv = dlopen("./libMulDiv.so",
 # 28 "app.c" 3 4
-                                             0x00002
+                                             0x00001
 # 28 "app.c"
-                                                     );
+                                                      );
        if(handleMulDiv == 
 # 29 "app.c" 3 4
                          ((void *)0)
